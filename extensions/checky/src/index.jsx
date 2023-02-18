@@ -1,24 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   render,
   Banner,
-  TextField,
-  BlockStack,
-  useApplyMetafieldsChange,
-  useMetafield,
-  Checkbox,
-} from '@shopify/checkout-ui-extensions-react';
+  useSettings,
+} from "@shopify/checkout-ui-extensions-react";
 
-render('Checkout::Dynamic::Render', () => <App />);
-// Set the entry point for the extension
-// render("Checkout::ShippingMethods::RenderAfter", () => <App />);
-// render('Checkout::DeliveryAddress::RenderBefore',() => <App />);
-
+// Set the entry points for the extension
+render("Checkout::Dynamic::Render", () => <App />);
+// render("Checkout::DeliveryAddress::RenderBefore", () => <App />);
 function App() {
+  // Use the merchant-defined settings to retrieve the extension's content
+  const {title, description, collapsible, status: merchantStatus} = useSettings();
+
+  // Set a default status for the banner if a merchant didn't configure the banner in the checkout editor
+  const status = merchantStatus ?? 'info';
+
+  // Render the banner
   return (
-     <Banner>
-        Sorry, we can only ship to Canada at this
-        time
-      </Banner>
+    <Banner title={title} status={status} collapsible={collapsible}>
+      {description}
+    </Banner>
   );
 }
+

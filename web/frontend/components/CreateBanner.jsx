@@ -17,30 +17,28 @@ export function CreateBanner() {
     />
   ) : null;
 
-  // const handleSubmit = async () => {
-  //   const response = await fetch("/api/products/create", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       title,
-  //       description,
-  //       images
-  //     }),
-  //   });
+  const handleSubmit = async () => {
+    const response = await fetch("/api/products/create", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        description,
+      }),
+    });
 
-  //   if (response.ok) {
-  //     setShowToast(true);
-  //   } else {
-  //     console.log("Error");
-  //   }
-  // };
+    if (response.ok) {
+      setShowToast(true);
+    } else {
+      console.log("Error");
+    }
+  };
 
   return (
     <>
       {toastMarkup}
-      <Form className="">
+      <Form onSubmit={handleSubmit}>
         <FormLayout>
             <TextField
               label="Title"

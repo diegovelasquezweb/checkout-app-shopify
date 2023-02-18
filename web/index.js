@@ -55,6 +55,19 @@ app.get("/api/products/create", async (_req, res) => {
   res.status(status).send({ success: status === 200, error });
 });
 
+//get all products
+app.get("/api/products", async (_req, res) => {
+  try {
+    const response = await shopify.api.rest.Product.all({
+      session: res.locals.shopify.session,
+    });
+    res.status(200).send(response);
+  }
+  catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 app.use(serveStatic(STATIC_PATH, { index: false }));
 
 app.use("/*", shopify.ensureInstalledOnShop(), async (_req, res, _next) => {
