@@ -14,6 +14,7 @@ import {
   useCartLines,
   useApplyCartLinesChange,
   useExtensionApi,
+  useSettings
 } from "@shopify/checkout-ui-extensions-react";
 
 render("Checkout::Dynamic::Render", () => <App />);
@@ -21,6 +22,7 @@ render("Checkout::Dynamic::Render", () => <App />);
 function App() {
   const { i18n, shop } = useExtensionApi();
   const applyCartLinesChange = useApplyCartLinesChange();
+  const {title} = useSettings();
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -67,7 +69,7 @@ function App() {
     )
       .then((response) => response.json())
       .then(({ data }) => setProducts(data.products.nodes))
-      .then( setTimeout(() => setLoading(false), 1000))
+      .then(setLoading(false))
       .catch((error) => {
         setTimeout(() => setShowError(false), 3000);
         console.log(error);
@@ -116,7 +118,7 @@ function App() {
   return (
     <BlockStack spacing="loose">
       <Divider />
-      <Heading level={2}>You might also like</Heading>
+      <Heading level={2}>{title ? title : 'You might also like'}</Heading>
       {productsOnOffer?.map((product) => (
         <BlockStack spacing="loose" key={product.variants.edges[0].node.id}>
           <InlineLayout

@@ -12,6 +12,16 @@ extension_points = [
 network_access = true
 block_progress = true
 api_access = true
+
+
+[settings]
+  [[settings.fields]]
+  key = "title"
+  type = "single_line_text_field"
+  name = "Recommended Products Title"
+  description = "Enter a title."
+
+
 # [[metafields]]
 # namespace = "my-namespace"
 # key = "my-key"
