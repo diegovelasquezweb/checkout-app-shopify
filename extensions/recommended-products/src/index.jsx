@@ -45,7 +45,7 @@ function App() {
             edges {
               node {
                 id
-                priceV2 {
+                price {
                   amount
                 }
               }
@@ -58,7 +58,7 @@ function App() {
     };
 
     fetch(
-      `${shop.storefrontUrl}api/unstable/graphql.json`,
+      `${shop.storefrontUrl}api/2023-01/graphql.json`,
       {
         method: 'POST',
         headers: {
@@ -138,7 +138,7 @@ function App() {
               <Text size="medium" emphasis="strong">
                 {product.title}
               </Text>
-              <Text appearance="subdued">{i18n.formatCurrency(product.variants.edges[0].node.priceV2.amount)}</Text>
+              <Text appearance="subdued">{i18n.formatCurrency(product.variants.edges[0].node.price.amount)}</Text>
             </BlockStack>
             <Button
               kind="secondary"
