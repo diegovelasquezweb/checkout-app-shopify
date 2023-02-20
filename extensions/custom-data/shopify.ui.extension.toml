@@ -36,6 +36,22 @@ api_access = true
   description = "Enter a title for tooltip"
 
   [[settings.fields]]
+  key = "show_button"
+  type = "boolean"
+  name = "show button"
+  description = "show button"
+
+  [[settings.fields]]
+  key = "button_url"
+  type = "single_line_text_field"
+  name = "button url"
+  description = "Enter an url"
+
+
+
+
+
+  [[settings.fields]]
   key = "button_type"
   type = "single_line_text_field"
   name = "Button type"

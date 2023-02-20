@@ -24,12 +24,13 @@ render("Checkout::Dynamic::Render", () => <App />);
 
 
 function App() {
-  const { title, description, image, tooltip, button_type: buttonType, button_style: buttonStyle } = useSettings();
+  const { title, description, image, tooltip, button_type: buttonType, button_style: buttonStyle, show_button: showButton, button_url } = useSettings();
 
-  const [button, setButton] = useState('Pay now');
+  const [button, setButton] = useState('Lorem Ipsum');
 
   const button_type = buttonType ?? 'plain';
   const button_style = buttonStyle ?? 'primary';
+  const show_button = showButton  ?? true;
 
   return (
     <BlockLayout rows={['auto', 'fill']} spacing="base">
@@ -61,39 +62,18 @@ function App() {
             }
           </InlineLayout>
         </View>
-        <View padding="base">
+        {show_button && <View padding="base">
           <Button
             kind={button_type}
             appearance={button_style}
+            to={button_url ? button_url : undefined}
             onPress={() => {
-              setButton('Click again ');
+              setButton('Click again');
             }}
           >
             {button}
           </Button>
-        </View>
-        <View padding="base">
-          <Button
-            kind={button_type}
-            appearance={button_style}
-            overlay={
-              <Modal padding title="Return policy">
-                <TextBlock>
-                  We have a 30-day return policy, which means you have 30 days after
-                  receiving your item to request a return.
-                </TextBlock>
-                <TextBlock>
-                  To be eligible for a return, your item must be in the same condition
-                  that you received it, unworn or unused, with tags, and in its
-                  original packaging. You’ll also need the receipt or proof of
-                  purchase.
-                </TextBlock>
-              </Modal>
-            }
-          >
-            Return policy
-          </Button>
-        </View>
+        </View>}
       </View>
     </BlockLayout>
   );
