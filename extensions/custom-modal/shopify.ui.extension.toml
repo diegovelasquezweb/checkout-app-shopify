@@ -1,5 +1,5 @@
 type = "checkout_ui_extension"
-name = "Custom Data"
+name = "Custom Modal"
 
 extension_points = [
   'Checkout::Dynamic::Render'
@@ -10,16 +10,23 @@ network_access = true
 block_progress = true
 api_access = true
 
+
 [settings]
+  [[settings.fields]]
+  key = "label"
+  type = "single_line_text_field"
+  name = "Button Label"
+  description = "Enter a label"
+
   [[settings.fields]]
   key = "title"
   type = "single_line_text_field"
-  name = "Banner title"
-  description = "Enter a title for the banner."
+  name = "modal title"
+  description = "Enter a title"
 
   [[settings.fields]]
   key = "description"
-  type = "single_line_text_field"
+  type = "multi_line_text_field"
   name = "Banner description"
   description = "Enter a description for the banner."
 
@@ -28,12 +35,6 @@ api_access = true
   type = "single_line_text_field"
   name = "Banner image"
   description = "https://cdn.shopify.com/s/files/1/0723/3640/8867/files/elementor-placeholder-image.webp?v=1676858525"
-
-  [[settings.fields]]
-  key = "tooltip"
-  type = "single_line_text_field"
-  name = "Banner tooltip"
-  description = "Enter a title for tooltip"
 
   [[settings.fields]]
   key = "button_type"
@@ -61,4 +62,8 @@ api_access = true
 
 # Read more on extension settings at https://shopify.dev/api/checkout-extensions/checkout/configuration
 # [settings]
-
+#   [[settings.fields]]
+#   key = "banner_title"
+#   type = "single_line_text_field"
+#   name = "Banner title"
+#   description = "Enter a title for the banner"

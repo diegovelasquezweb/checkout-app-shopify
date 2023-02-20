@@ -1,5 +1,5 @@
 type = "checkout_ui_extension"
-name = "Recommended products"
+name = "Recommended Products"
 
 extension_points = [
   'Checkout::Dynamic::Render',
