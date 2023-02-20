@@ -1,26 +1,9 @@
 type = "checkout_ui_extension"
-name = "Recommended Products"
+name = "Custom Forms"
 
 extension_points = [
-  'Checkout::Dynamic::Render',
-  'Checkout::ShippingMethods::RenderAfter',
-  'Checkout::ShippingMethods::RenderBefore',
-  'Checkout::DeliveryAddress::RenderBefore'
+  'Checkout::Dynamic::Render'
 ]
-
-[capabilities]
-network_access = true
-block_progress = true
-api_access = true
-
-
-[settings]
-  [[settings.fields]]
-  key = "title"
-  type = "single_line_text_field"
-  name = "Recommended Products Title"
-  description = "Enter a title."
-
 
 # [[metafields]]
 # namespace = "my-namespace"
