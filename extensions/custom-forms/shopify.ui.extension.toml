@@ -5,6 +5,30 @@ extension_points = [
   'Checkout::Dynamic::Render'
 ]
 
+[capabilities]
+network_access = true
+block_progress = true
+api_access = true
+
+[settings]
+  [[settings.fields]]
+  key = "show_checkbox"
+  type = "boolean"
+  name = "Show Demo Inputs"
+
+  [[settings.fields]]
+  key = "name_conditional"
+  type = "single_line_text_field"
+  name = "label checkbox"
+
+  [[settings.fields]]
+  key = "field"
+  type = "single_line_text_field"
+  name = "save data on Order"
+  description = "This field save data in order"
+
+
+
 # [[metafields]]
 # namespace = "my-namespace"
 # key = "my-key"
